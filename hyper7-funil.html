@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYPER7 — Site profissional que vende, não só existe</title>
+<meta name="description" content="Sites, sistemas e apps sob medida. Do orçamento ao ar em poucos dias. Hyper7 — desenvolvimento com projetos reais em produção.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cyan:#00e5ff;--cyan-dark:#0097a7;--bg:#050607;--bg-soft:#0b0d0e;--line:#1c2223;
+    --text:#f2f6f6;--text-2:#7c8888;--text-3:#4a5454;--ease:cubic-bezier(.16,.84,.44,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;}
+  main,header,footer{position:relative;z-index:1;}
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}}
+  h1,h2,h3{font-family:'Chakra Petch',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-0.01em;margin:0;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  img,svg{display:block;max-width:100%;}
+  ::selection{background:var(--cyan);color:#000;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--cyan);}
+  .btn{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.03em;padding:14px 26px;display:inline-flex;align-items:center;gap:9px;border-radius:2px;transition:transform .22s var(--ease),background .22s ease,color .22s ease,box-shadow .22s ease;border:1px solid transparent;white-space:nowrap;}
+  .btn-solid{background:var(--cyan);color:#03080a;animation:btnPulse 2.6s ease-in-out infinite;}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 0 40px -4px rgba(0,229,255,.8);animation:none;}
+  @keyframes btnPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,229,255,.45);}50%{box-shadow:0 0 0 10px rgba(0,229,255,0);}}
+  @media (prefers-reduced-motion: reduce){.btn-solid{animation:none;}}
+  .btn-ghost{border-color:var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);}
+  .btn-whatsapp{background:#25D366;color:#03150a;}
+  .btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 10px 26px -6px rgba(37,211,102,.55);}
+  [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+
+  /* ============ TOPO / BARRA DE OFERTA ============ */
+  /* ============ HEADER ============ */
+  header{position:sticky;top:0;left:0;right:0;z-index:500;background:rgba(5,6,7,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s ease;}
+  header.scrolled{border-bottom-color:var(--line);}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.06em;display:flex;align-items:center;gap:9px;}
+  .logo-dot{width:7px;height:7px;background:var(--cyan);border-radius:50%;box-shadow:0 0 8px var(--cyan);}
+  nav ul{display:flex;gap:34px;list-style:none;margin:0;padding:0;}
+  nav a{font-size:14px;color:var(--text-2);position:relative;transition:color .25s ease;}
+  nav a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--cyan);transition:width .25s ease;}
+  nav a:hover{color:var(--text);}
+  nav a:hover::after{width:100%;}
+  .hamb{display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:6px;}
+  .hamb span{width:22px;height:2px;background:var(--text);transition:transform .3s ease,opacity .3s ease;}
+  .hamb.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamb.open span:nth-child(2){opacity:0;}
+  .hamb.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .desktop-only{display:none;}
+  .mobile-only{display:flex;}
+  @media (min-width:901px){.desktop-only{display:flex;}.mobile-only{display:none !important;}}
+  @media (max-width:900px){.desktop-only{display:none !important;}.mobile-only{display:flex;}}
+  #mobileMenu{position:fixed;inset:72px 0 0 0;z-index:490;background:var(--bg);border-top:1px solid var(--line);transform:translateY(-8px);opacity:0;pointer-events:none;transition:transform .28s var(--ease),opacity .28s ease;display:flex;flex-direction:column;padding:8px 32px 32px;}
+  #mobileMenu.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+  #mobileMenu a{padding:18px 0;border-bottom:1px solid var(--line);font-size:16px;font-family:'Chakra Petch',sans-serif;text-transform:uppercase;}
+  #mobileMenu .btn{margin-top:22px;justify-content:center;}
+
+  /* ============ HERO ============ */
+  .hero{padding:56px 0 70px;position:relative;background:radial-gradient(ellipse 900px 500px at 80% 10%,rgba(0,229,255,.09),transparent 60%);}
+  .hero-inner{max-width:760px;margin:0 auto;text-align:center;}
+  .hero h1{font-size:clamp(34px,5.6vw,58px);line-height:1.08;margin-bottom:20px;}
+  .hero h1 em{font-style:normal;color:var(--cyan);}
+  .hero-sub{font-size:17px;color:var(--text-2);max-width:560px;margin:0 auto 34px;}
+  .hero-actions{display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .hero-btnrow{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .micro-trust{font-size:10.5px;color:var(--text-3);letter-spacing:.06em;display:flex;align-items:center;gap:6px;}
+  .micro-trust::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--cyan);}
+
+  /* ============ MARQUEE ============ */
+  .marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:16px 0;background:var(--bg-soft);position:relative;z-index:1;}
+  .marquee-track{display:flex;gap:44px;white-space:nowrap;width:max-content;animation:scroll-x 24s linear infinite;}
+  .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
+  .marquee-track span{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text-3);letter-spacing:.04em;}
+  .marquee-track span b{color:var(--cyan);font-weight:600;}
+  @keyframes scroll-x{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ============ TILT 3D ============ */
+  .tilt{transform-style:preserve-3d;will-change:transform;transition:transform .12s ease-out,border-color .2s ease;position:relative;}
+  .tilt::before{
+    content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s ease;
+    background:radial-gradient(circle at var(--spot-x,50%) var(--spot-y,50%), rgba(0,229,255,.14), transparent 60%);
+  }
+  .tilt:hover::before{opacity:1;}
+  .tilt:hover{border-color:rgba(0,229,255,.4) !important;}
+
+  /* ============ BENEFÍCIOS ============ */
+  .benefits{padding:100px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft);}
+  .sec-head{max-width:640px;margin:0 auto 50px;text-align:center;}
+  .sec-head .eyebrow{justify-content:center;}
+  .sec-head .eyebrow::before{display:none;}
+  .sec-head h2{font-size:clamp(26px,3.4vw,38px);margin-bottom:14px;}
+  .sec-head p{color:var(--text-2);font-size:15.5px;margin:0;}
+  .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .benefit-item{background:var(--bg);padding:30px 26px;}
+  .benefit-check{width:26px;height:26px;border-radius:50%;background:rgba(0,229,255,.1);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:16px;}
+  .benefit-item h3{font-size:15px;letter-spacing:0;margin-bottom:8px;}
+  .benefit-item p{margin:0;color:var(--text-2);font-size:13.5px;}
+
+  /* ============ CTA STRIP ============ */
+  .cta-strip{border-bottom:1px solid var(--line);padding:56px 0;}
+  .cta-strip-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .cta-strip h3{font-size:clamp(20px,2.6vw,26px);letter-spacing:-0.01em;max-width:520px;}
+  .cta-strip h3 b{color:var(--cyan);}
+  .cta-strip p{margin:8px 0 0;color:var(--text-2);font-size:14px;max-width:440px;}
+
+  /* ============ SOBRE ============ */
+  .about{padding:110px 0;}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;}
+  .about-visual{position:relative;aspect-ratio:1/1;border:1px solid var(--line);border-radius:10px;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .about-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(0,229,255,.16),transparent 65%);}
+  .about-visual span{position:relative;font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:96px;color:var(--text);}
+  .about-visual span em{font-style:normal;color:var(--cyan);}
+  .about-copy p{color:var(--text-2);font-size:16px;margin:0 0 16px;max-width:500px;}
+  .about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .about-tags span{font-family:'JetBrains Mono',monospace;font-size:11px;border:1px solid var(--line);padding:7px 12px;border-radius:3px;color:var(--text-2);}
+
+  /* ============ SERVIÇOS ============ */
+  .services{padding:0 0 110px;}
+  .service-list{border-top:1px solid var(--line);}
+  .service-row{
+    display:grid;grid-template-columns:60px 1fr 24px;align-items:center;gap:18px;
+    padding:26px 0;border-bottom:1px solid var(--line);transition:background .2s ease,padding-left .2s ease;cursor:pointer;
+  }
+  .service-row:hover{background:var(--bg-soft);padding-left:14px;}
+  .service-num{font-family:'JetBrains Mono',monospace;color:var(--text-3);font-size:13px;}
+  .service-row h3{font-size:19px;letter-spacing:0;margin-bottom:6px;}
+  .service-row p{margin:0;color:var(--text-2);font-size:14px;max-width:560px;}
+  .service-arrow{color:var(--cyan);font-size:20px;transition:transform .25s var(--ease);}
+  .service-row:hover .service-arrow{transform:translateX(6px);}
+
+  /* ============ CONFIANÇA (sem depoimento inventado) ============ */
+  .trust{padding:100px 0;background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .trust-item{background:var(--bg);padding:28px 22px;text-align:center;}
+  .trust-num{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:26px;color:var(--cyan);}
+  .trust-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-2);margin-top:6px;}
+
+  /* ============ CONTATO FINAL ============ */
+  .contact-inner{text-align:center;max-width:640px;margin:0 auto;padding:120px 0;}
+  .contact-inner .eyebrow{justify-content:center;}
+  .contact-inner .eyebrow::before{display:none;}
+  .contact-inner h2{font-size:clamp(28px,4.2vw,46px);margin-bottom:18px;}
+  .contact-inner h2 b{color:var(--cyan);}
+  .contact-inner p{color:var(--text-2);font-size:16px;margin-bottom:34px;}
+  .contact-actions{display:flex;flex-direction:column;align-items:center;gap:12px;}
+
+  /* ============ FOOTER ============ */
+  footer{border-top:1px solid var(--line);padding:50px 0 28px;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:22px;}
+  .foot-logo{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:18px;letter-spacing:.06em;}
+  .foot-logo em{color:var(--cyan);font-style:normal;}
+  .foot-links{display:flex;gap:26px;flex-wrap:wrap;}
+  .foot-links a{font-size:13.5px;color:var(--text-2);transition:color .2s ease;}
+  .foot-links a:hover{color:var(--cyan);}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:.05em;}
+
+  /* ============ WHATSAPP WIDGET ============ */
+  #waFab{position:fixed;bottom:26px;right:26px;z-index:600;width:58px;height:58px;border-radius:50%;background:var(--cyan);border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px -8px rgba(0,229,255,.6);}
+  #waFab svg{width:26px;height:26px;fill:#03080a;}
+  #waFab::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--cyan);animation:fab-pulse 2.4s ease-out infinite;}
+  @keyframes fab-pulse{0%{transform:scale(.9);opacity:.8;}100%{transform:scale(1.5);opacity:0;}}
+  #waPanel{position:fixed;bottom:98px;right:26px;z-index:600;width:300px;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:20px;box-shadow:0 30px 60px -20px rgba(0,0,0,.8);transform:scale(.97);opacity:0;pointer-events:none;transform-origin:bottom right;transition:transform .25s var(--ease),opacity .25s ease;}
+  #waPanel.open{transform:scale(1);opacity:1;pointer-events:auto;}
+  .wa-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .wa-avatar{width:34px;height:34px;border-radius:50%;background:var(--cyan);color:#03080a;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;flex-shrink:0;}
+  .wa-name{font-size:13.5px;font-weight:600;}
+  .wa-status{font-size:11px;color:var(--cyan);display:flex;align-items:center;gap:5px;}
+  .wa-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);}
+  .wa-msg{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--text-2);margin-bottom:14px;line-height:1.6;}
+  #waPanel .btn{width:100%;justify-content:center;}
+  .wa-close{position:absolute;top:12px;right:12px;background:none;border:none;color:var(--text-3);font-size:16px;padding:4px;line-height:1;}
+
+  /* ============ STICKY MOBILE CTA ============ */
+  #stickyCta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:550;background:rgba(11,13,14,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom));}
+  #stickyCta .btn{width:100%;justify-content:center;}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:900px){
+    .benefit-grid{grid-template-columns:1fr 1fr;}
+    .about-grid{grid-template-columns:1fr;gap:36px;}
+    .trust-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 20px;}
+    .hero{padding:36px 0 48px;}
+    .benefits,.about,.trust{padding:70px 0;}
+    .services{padding:0 0 70px;}
+    .benefit-grid{grid-template-columns:1fr;}
+    .trust-grid{grid-template-columns:1fr 1fr;}
+    .service-row{grid-template-columns:40px 1fr 20px;}
+    .foot-row{flex-direction:column;align-items:flex-start;}
+    #waPanel{right:16px;left:16px;width:auto;bottom:158px;}
+    #waFab{right:18px;bottom:88px;}
+    #stickyCta{display:block;}
+    body{padding-bottom:64px;}
+    .contact-inner{padding:80px 0;}
+  }
+</style>
+</head>
+<body>
+
+
+<!-- HEADER -->
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="#top" class="logo"><span class="logo-dot"></span>HYPER<span style="color:var(--cyan)">7</span></a>
+    <nav class="desktop-only" aria-label="Navegação principal">
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener" class="btn btn-solid desktop-only">Fazer orçamento</a>
+    <button class="hamb mobile-only" id="hambBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav id="mobileMenu" aria-label="Navegação mobile">
+  <a href="#sobre">Sobre</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#contato">Contato</a>
+  <a href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener" class="btn btn-solid">Fazer orçamento</a>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner" data-reveal>
+        <h1>Um site que <em>vende</em> de verdade</h1>
+        <p class="hero-sub">Eu crio seu site, sistema ou app do zero até ficar no ar — rápido, simples e sem sumir no meio do caminho.</p>
+        <div class="hero-actions">
+          <div class="hero-btnrow">
+            <a href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener" class="btn btn-solid">Me chama no WhatsApp</a>
+            <a href="#servicos" class="btn btn-ghost">Ver o que eu faço</a>
+          </div>
+          <div class="micro-trust mono">orçamento sem compromisso · resposta rápida</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack" aria-hidden="true"></div>
+  </div>
+
+  <!-- BENEFÍCIOS -->
+  <section class="benefits" id="beneficios">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div class="eyebrow">por que ter um site</div>
+        <h2>Ter site bom <b style="color:var(--cyan)">não é luxo</b></h2>
+        <p>Um site bom trabalha por você o dia inteiro, todo dia — mesmo enquanto você dorme.</p>
+      </div>
+      <div class="benefit-grid" data-reveal>
+        <div class="benefit-item tilt">
+          <div class="benefit-check">✓</div>
+          <h3>Aberto o dia todo</h3>
+          <p>Seu negócio funcionando 24 horas, sem parar, sem precisar de ninguém.</p>
+        </div>
+        <div class="benefit-item tilt">
+          <div class="benefit-check">✓</div>
+          <h3>Mais confiança</h3>
+          <p>Cliente confia mais em quem tem site bonito e profissional.</p>
+        </div>
+        <div class="benefit-item tilt">
+          <div class="benefit-check">✓</div>
+          <h3>Mais gente te achando</h3>
+          <p>Você vende pra muito mais gente, não só pra quem passa na porta.</p>
+        </div>
+        <div class="benefit-item tilt">
+          <div class="benefit-check">✓</div>
+          <h3>Contato fácil</h3>
+          <p>Cliente te chama num clique, direto pelo WhatsApp.</p>
+        </div>
+        <div class="benefit-item tilt">
+          <div class="benefit-check">✓</div>
+          <h3>Mais venda</h3>
+          <p>Feito pra transformar quem visita em cliente de verdade.</p>
+        </div>
+        <div class="benefit-item tilt">
+          <div class="benefit-check">✓</div>
+          <h3>O site é seu</h3>
+          <p>Ninguém trava, ninguém tira depois. É seu, pra sempre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="wrap cta-strip-inner" data-reveal>
+      <div>
+        <h3>Enquanto seu site não existe, <b>seu concorrente já apareceu.</b></h3>
+        <p>Não precisa decidir tudo agora — só manda uma mensagem.</p>
+      </div>
+      <a href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener" class="btn btn-solid">Chama no zap</a>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section class="about" id="sobre">
+    <div class="wrap about-grid">
+      <div class="about-visual" data-reveal><span>H<em>7</em></span></div>
+      <div data-reveal>
+        <div class="eyebrow">quem constrói</div>
+        <h2 style="font-size:clamp(24px,3vw,34px);margin-bottom:20px;">Zero cases genéricos. <span style="color:var(--cyan)">Mil ideias em produção.</span></h2>
+        <div class="about-copy">
+          <p>Sou eu que crio, testo e coloco seu projeto no ar. Sem curso, sem enrolação — trabalho de verdade, rodando de verdade.</p>
+          <p>Você fala comigo do começo ao fim. Sem passar de mão em mão, sem ninguém sumindo no meio do caminho.</p>
+        </div>
+        <div class="about-tags">
+          <span>React</span><span>Next.js</span><span>Firebase</span><span>Supabase</span><span>PWA</span><span>Automação</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="services" id="servicos">
+    <div class="wrap">
+      <div class="sec-head" data-reveal style="text-align:left;margin-left:0;max-width:640px;">
+        <div class="eyebrow" style="justify-content:flex-start;">no que posso te ajudar</div>
+        <h2 style="text-align:left;">O que eu faço por você</h2>
+      </div>
+      <div class="service-list" data-reveal>
+        <a class="service-row tilt" href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener">
+          <span class="service-num mono">01</span>
+          <div><h3>Sites institucionais</h3><p>Um site simples e bonito pra sua empresa.</p></div>
+          <span class="service-arrow">→</span>
+        </a>
+        <a class="service-row tilt" href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener">
+          <span class="service-num mono">02</span>
+          <div><h3>Landing pages de conversão</h3><p>Página feita pra vender e trazer cliente novo.</p></div>
+          <span class="service-arrow">→</span>
+        </a>
+        <a class="service-row tilt" href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener">
+          <span class="service-num mono">03</span>
+          <div><h3>Sistemas personalizados</h3><p>Sistema do seu jeito, pro seu negócio.</p></div>
+          <span class="service-arrow">→</span>
+        </a>
+        <a class="service-row tilt" href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener">
+          <span class="service-num mono">04</span>
+          <div><h3>Apps web (PWA)</h3><p>Aplicativo que funciona até sem internet.</p></div>
+          <span class="service-arrow">→</span>
+        </a>
+        <a class="service-row tilt" href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener">
+          <span class="service-num mono">05</span>
+          <div><h3>Automação de processos</h3><p>Tarefa chata e repetitiva? O sistema faz por você.</p></div>
+          <span class="service-arrow">→</span>
+        </a>
+        <a class="service-row tilt" href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener">
+          <span class="service-num mono">06</span>
+          <div><h3>Soluções com IA</h3><p>Inteligência artificial trabalhando junto com você.</p></div>
+          <span class="service-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIANÇA -->
+  <section class="trust">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div class="eyebrow">como eu trabalho</div>
+        <h2>Sem promessa vazia</h2>
+      </div>
+      <div class="trust-grid" data-reveal>
+        <div class="trust-item tilt"><div class="trust-num mono">100%</div><div class="trust-label mono">Deploy até o fim</div></div>
+        <div class="trust-item tilt"><div class="trust-num mono">Real</div><div class="trust-label mono">Código, não template</div></div>
+        <div class="trust-item tilt"><div class="trust-num mono">1:1</div><div class="trust-label mono">Direto comigo, sem intermediário</div></div>
+        <div class="trust-item tilt"><div class="trust-num mono">24/7</div><div class="trust-label mono">Estudando pra entregar melhor</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO FINAL -->
+  <section id="contato">
+    <div class="wrap contact-inner" data-reveal>
+      <div class="eyebrow">vamos construir</div>
+      <h2>Seu site ideal <b>começa numa mensagem</b></h2>
+      <p>Manda um oi agora. Eu te explico tudo, sem compromisso.</p>
+      <div class="contact-actions">
+        <a href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener" class="btn btn-solid" style="padding:16px 34px;font-size:14px;">Me chama no WhatsApp</a>
+        <div class="micro-trust mono">sem compromisso · não custa nada perguntar</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="foot-logo">HYPER<em>7</em></div>
+      <div class="foot-links">
+        <a href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.tiktok.com/@hyper7.dev?_r=1&_t=ZS-985cSKhGBPe" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.instagram.com/hyper7.dev" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/share/1BmRbuvLb5/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 HYPER7</span>
+      <span>NASCEMOS PARA DISRUPTAR</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP WIDGET -->
+<div id="waPanel" role="dialog" aria-label="Chat do WhatsApp">
+  <button class="wa-close" id="waClose" aria-label="Fechar">✕</button>
+  <div class="wa-head">
+    <div class="wa-avatar mono">H7</div>
+    <div><div class="wa-name">Hyper7</div><div class="wa-status">online agora</div></div>
+  </div>
+  <div class="wa-msg">E aí! 👋 Aqui é o Hyper7. Me chama que eu te respondo rapidinho — pode falar!</div>
+  <a href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener" class="btn btn-solid">Abrir conversa</a>
+</div>
+<button id="waFab" aria-label="Abrir chat do WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.3c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.2.9.9-3.1-.2-.3C3.5 14.8 3 13.4 3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9z"/></svg>
+</button>
+
+<!-- STICKY MOBILE CTA -->
+<div id="stickyCta">
+  <a href="https://wa.me/qr/7RMXKNC6TRYOJ1" target="_blank" rel="noopener" class="btn btn-whatsapp">
+    <svg viewBox="0 0 24 24" width="16" height="16" style="fill:currentColor;"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.3c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.2.9.9-3.1-.2-.3C3.5 14.8 3 13.4 3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9z"/></svg>
+    Me chama no WhatsApp
+  </a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+  var header = document.getElementById('siteHeader');
+  function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 20); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  var hamb = document.getElementById('hambBtn');
+  var menu = document.getElementById('mobileMenu');
+  function closeMenu(){ hamb.classList.remove('open'); menu.classList.remove('open'); hamb.setAttribute('aria-expanded','false'); }
+  hamb.addEventListener('click', function(){
+    var isOpen = menu.classList.toggle('open');
+    hamb.classList.toggle('open', isOpen);
+    hamb.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
+  document.addEventListener('click', function(e){
+    if(!menu.classList.contains('open')) return;
+    if(!menu.contains(e.target) && e.target !== hamb && !hamb.contains(e.target)) closeMenu();
+  });
+
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else { revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }
+
+  /* ---------- MARQUEE ---------- */
+  var techs = ['React','Next.js','Firebase','Supabase','TypeScript','Tailwind','PWA','Node.js','Vercel','Git','Automação','IA'];
+  var track = document.getElementById('marqueeTrack');
+  if(track){
+    var mHtml = '';
+    for(var r=0;r<2;r++){ techs.forEach(function(t){ mHtml += '<span><b>'+t+'</b> —</span>'; }); }
+    track.innerHTML = mHtml;
+  }
+
+  /* ---------- TILT CARDS ---------- */
+  if(isFinePointer && !reduceMotion){
+    document.querySelectorAll('.tilt').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left)/r.width - 0.5;
+        var y = (e.clientY - r.top)/r.height - 0.5;
+        card.style.transform = 'perspective(700px) rotateY(' + (x*8) + 'deg) rotateX(' + (-y*8) + 'deg) translateZ(2px)';
+        card.style.setProperty('--spot-x', ((x+0.5)*100) + '%');
+        card.style.setProperty('--spot-y', ((y+0.5)*100) + '%');
+      });
+      card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+    });
+  }
+
+  var waFab = document.getElementById('waFab');
+  var waPanel = document.getElementById('waPanel');
+  var waClose = document.getElementById('waClose');
+  var autoCloseTimer;
+  function openPanel(){ waPanel.classList.add('open'); try{ localStorage.setItem('hyper7_wa_state','open'); }catch(e){} resetAutoClose(); }
+  function closePanel(){ waPanel.classList.remove('open'); try{ localStorage.setItem('hyper7_wa_state','closed'); }catch(e){} clearTimeout(autoCloseTimer); }
+  function resetAutoClose(){ clearTimeout(autoCloseTimer); autoCloseTimer = setTimeout(closePanel, 8000); }
+  waFab.addEventListener('click', function(){ waPanel.classList.contains('open') ? closePanel() : openPanel(); });
+  waClose.addEventListener('click', closePanel);
+  waPanel.addEventListener('mousemove', resetAutoClose);
+  setTimeout(function(){
+    var savedState; try{ savedState = localStorage.getItem('hyper7_wa_state'); }catch(e){}
+    if(window.scrollY < 400 && savedState !== 'closed') openPanel();
+  }, 3600);
+  document.addEventListener('click', function(e){
+    if(!waPanel.classList.contains('open')) return;
+    if(!waPanel.contains(e.target) && e.target !== waFab && !waFab.contains(e.target)) closePanel();
+  });
+})();
+</script>
+
+</body>
+</html>
